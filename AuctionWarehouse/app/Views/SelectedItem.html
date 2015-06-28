@@ -1,0 +1,24 @@
+﻿
+<h2>{{vm.message}}</h2>
+<br />
+<h3>(item.imageUrl)</h3>
+<br />
+<h5>Bidding on: (item.name)</h5>
+<br />
+<p>Availible: (bid.availible)</p>
+<br />
+<p>Description of Item: (item.description)</p>
+<br />
+<p>Minimum price: (item.minPrice)</p>
+<br />
+<p>Current highest bid: (bid.amount)</p>
+<br />
+<p>Bidding window closes: (item.expiration)</p>
+<br />
+<form ng-submit="vm.addBid()">
+    <label>Amount you wish to bid</label>
+    <input ng-model="vm.amount" type="text" />
+    <input type="submit" value="submit"/>
+</form>
+
+
