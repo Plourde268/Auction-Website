@@ -304,8 +304,8 @@
       <Project>{0ef0ce7f-df94-4516-a4a1-7e252dffed8a}</Project>
       <Name>AuctionWarehouse.Data.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\AuctionWarehouse.Data.csproj">
-      <Project>{d9277402-d636-436f-9745-c251869e90b4}</Project>
+    <ProjectReference Include="..\AuctionWarehouse.Data\AuctionWarehouse.Data.csproj">
+      <Project>{72305850-4445-4f1a-abb4-f534e5392985}</Project>
       <Name>AuctionWarehouse.Data</Name>
     </ProjectReference>
   </ItemGroup>

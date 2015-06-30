@@ -4,6 +4,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using AuctionWarehouse.Models;
+using AuctionWarehouse.Data.Model;
+using AuctionWarehouse.Data;
 
 namespace AuctionWarehouse
 {

@@ -22,9 +22,8 @@ namespace AuctionWarehouse.Data.Model
 
         public int AddressId { get; set; }
         [ForeignKey("AddressId")]
-        public virtual Address BillingAddress { get; set; }
-
-        [ForeignKey("AddressId")]
         public virtual Address ShippingAddress { get; set; }
+
+        public IList<Item> Purchases { get; set; }
     }
 }

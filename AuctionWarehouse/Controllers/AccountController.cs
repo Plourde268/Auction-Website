@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using AuctionWarehouse.Models;
 using AuctionWarehouse.Providers;
 using AuctionWarehouse.Results;
+using AuctionWarehouse.Data.Model;
 
 namespace AuctionWarehouse.Controllers
 {

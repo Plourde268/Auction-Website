@@ -24,5 +24,11 @@ namespace AuctionWarehouse.Data.Model
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress { get; set; }
 
+        public IList<Item> ItemsSold { get; set; }
+
+        public int UserId { get; set; }
+
+        public AspNetUsers MyProperty { get; set; }
+
     }
 }

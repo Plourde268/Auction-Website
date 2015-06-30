@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using AuctionWarehouse.Providers;
 using AuctionWarehouse.Models;
+using AuctionWarehouse.Data;
 
 namespace AuctionWarehouse
 {
