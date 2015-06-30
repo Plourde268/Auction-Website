@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AuctionWarehouse.Data.Model
 {
-    public class Bid
+    public class Bid : AuditObject
     {
         [Key]
         public int BidId { get; set; }
@@ -24,8 +24,6 @@ namespace AuctionWarehouse.Data.Model
         public decimal Amount { get; set; }
 
         public bool Availible { get; set; }
-
-        public DateTime DateCreated { get; set; }
 
     }
 }

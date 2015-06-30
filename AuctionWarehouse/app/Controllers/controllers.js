@@ -16,10 +16,14 @@
 
         vm.message = '10-4 good buddy';
     }
-    function Items() {
+    function Items(DbService) {
         var vm = this;
 
         vm.message = 'List of all of the items in the virtual Warehouse';
+
+        DbService.getItems().then(function (items) {
+            vm.auctionItems = items;
+        })
     }
     function SelectedItem() {
         var vm = this;
@@ -36,10 +40,31 @@
 
         vm.message = 'Category Name';
     }
-    function Add() {
+    function Add(DbService, $location) {
         var vm = this;
 
+        vm.isLoading = false;
+
         vm.message = 'Allows a seller to post an item';
+
+        vm.addItems = function () {
+            vm.isLoading = true;
+
+            var item = {
+                Name: vm.name,
+                Description: vm.description,
+                Category: {CatName: vm.category}
+            };
+
+            DbService.addItem(item).then(redirectToAllItems, displayError)
+        };
+        function redirectToAllItems() {
+            vm.isLoading = false;
+            $location.path('/items');
+        }
+        function displayError() {
+            vm.isLoading = false;
+        }
     }
     function UserCurrBids() {
         var vm = this;

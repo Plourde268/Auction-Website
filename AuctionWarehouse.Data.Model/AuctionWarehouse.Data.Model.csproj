@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs" />
+    <Compile Include="AuditObject.cs" />
     <Compile Include="Bid.cs" />
     <Compile Include="Buyer.cs" />
     <Compile Include="Category.cs" />

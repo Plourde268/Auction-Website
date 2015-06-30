@@ -32,6 +32,7 @@ namespace AuctionWarehouse.Data.Model
         public ItemCondition Condition { get; set; }
 
         public string ImageUrl { get; set; }
+
     }
 
     public enum ItemCondition
