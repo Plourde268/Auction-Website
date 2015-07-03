@@ -39,15 +39,6 @@ namespace AuctionWarehouse.Controllers.api
             return items;
         }
 
-        //public bool Post(Item item)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        items.Add(item);
-        //        //.SaveChanges();
-                
-        //    }
-        //    return true;
-        //}
+        
     }
 }
