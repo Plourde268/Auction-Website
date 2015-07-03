@@ -50,13 +50,13 @@ namespace AuctionWarehouse.Data.Migrations
                         FirstName = c.String(),
                         LastName = c.String(),
                         Email = c.String(),
-                        AddressId = c.Int(nullable: false),
+                        AddressId = c.Int(),
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.BuyerId)
-                .ForeignKey("dbo.Addresses", t => t.AddressId, cascadeDelete: true)
+                .ForeignKey("dbo.Addresses", t => t.AddressId)
                 .Index(t => t.AddressId);
             
             CreateTable(
@@ -103,13 +103,13 @@ namespace AuctionWarehouse.Data.Migrations
                         FirstName = c.String(),
                         LastName = c.String(),
                         Email = c.String(),
-                        AddressId = c.Int(nullable: false),
+                        AddressId = c.Int(),
                         DateCreated = c.DateTime(nullable: false),
                         DateUpdated = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.SellerId)
-                .ForeignKey("dbo.Addresses", t => t.AddressId, cascadeDelete: true)
+                .ForeignKey("dbo.Addresses", t => t.AddressId)
                 .Index(t => t.AddressId);
             
             CreateTable(

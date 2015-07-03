@@ -17,7 +17,6 @@ namespace AuctionWarehouse.Data
         }
 
         public IDbSet<Address> Addresses { get; set; }
-        //public IDbSet<AuditObject> AuditObjects { get; set; }
         public IDbSet<Bid> Bids { get; set; }
         public IDbSet<Buyer> Buyers { get; set; }
         public IDbSet<Category> Categories { get; set; }

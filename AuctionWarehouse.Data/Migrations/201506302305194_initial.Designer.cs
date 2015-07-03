@@ -13,7 +13,7 @@ namespace AuctionWarehouse.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201506302107496_initial"; }
+            get { return "201506302305194_initial"; }
         }
         
         string IMigrationMetadata.Source

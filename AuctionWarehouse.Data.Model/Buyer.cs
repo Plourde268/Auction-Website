@@ -20,7 +20,7 @@ namespace AuctionWarehouse.Data.Model
 
         public string Email { get; set; }
 
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address ShippingAddress { get; set; }
 

@@ -20,7 +20,7 @@
             .success(function (data) {
                 console.log(data);
 
-                data.forEach(function (item) {
+                data.ItemList.forEach(function (item) {
                     items.push(item);
                 })
                 initialDeferred.resolve(items);

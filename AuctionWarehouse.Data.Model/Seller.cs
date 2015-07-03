@@ -20,15 +20,12 @@ namespace AuctionWarehouse.Data.Model
 
         public string Email { get; set; }
 
-        public int AddressId { get; set; }
+        public int? AddressId { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress { get; set; }
 
         public IList<Item> ItemsSold { get; set; }
 
-        public int UserId { get; set; }
-
-        public AspNetUsers MyProperty { get; set; }
-
+        
     }
 }

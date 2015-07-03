@@ -39,8 +39,8 @@ namespace AuctionWarehouse.Data.Model
 
     public enum ItemCondition
     {
-        New,
-        Good,
-        Fair
+        New = 1,
+        Good = 2,
+        Fair = 3
     }
 }
