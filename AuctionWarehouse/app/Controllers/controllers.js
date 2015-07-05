@@ -53,7 +53,9 @@
             var item = {
                 Name: vm.name,
                 Description: vm.description,
-                Category: {CatName: vm.category}
+                Category: { CatName: vm.category },
+                ImageUrl: vm.imageUrl,
+                MinPrice: vm.minPrice
             };
 
             DbService.addItem(item).then(redirectToAllItems, displayError)
@@ -81,9 +83,19 @@
 
         vm.message = 'Register as a buyer or a seller';
     }
-    function Login() {
+    function Login(loginService, $location) {
         var vm = this;
 
         vm.message = 'Allows retrning users to sign in';
+
+        vm.login = function () {
+            loginService.login(vm.username, vm.password).then(loginSuccess, loginFail);
+        }
+        function loginSuccess() {
+            $location.path("/items");
+        }
+        function loginFail() {
+            console.log("login doesnt work");
+        }
     }
 })();

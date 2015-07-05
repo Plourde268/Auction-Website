@@ -29,6 +29,5 @@ namespace AuctionWarehouse.Data.Model
         [ForeignKey("AddressId")]
         public virtual Address BillingAddress { get; set; }
 
-       
     }
 }

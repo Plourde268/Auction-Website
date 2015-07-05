@@ -1,10 +1,12 @@
 ﻿(function () {
     angular.module('Auction')
-        .factory('DbService', DbService);
+        .factory('DbService', DbService)
+        .factory('loginService', loginService);
 
-    function DbService($http, $q) {
+    function DbService($http, $q, $window) {
         var items = [];
         var initialDeferred = $q.defer();
+        var token = $window.sessionStorage.getItem('token');
         var service = {};
 
         preloadItems();
@@ -15,7 +17,8 @@
         function preloadItems() {
             $http({
                 url: 'api/Auction',
-                method: 'GET'
+                method: 'GET',
+                headers: {'Authorization' : 'Bearer ' + token}
             })
             .success(function (data) {
                 console.log(data);
@@ -39,7 +42,8 @@
             $http({
                 url: '/api/Auction',
                 method: 'POST',
-                data: item
+                data: item,
+                headers: {'Authorization': 'Bearer ' + token}
             })
             .success(function (data){
                 if (data) {
@@ -52,9 +56,30 @@
             });
             return deferred.promise;
         }
-
         return service;
     }
 
-    
+    function loginService($http, $q, $window) {
+        var service = {};
+
+        service.login = login;
+
+        function login(username, password) {
+            var deferred = $q.defer();
+
+            $http({
+                url: '/Token',
+                method: 'POST',
+                data: 'username=' + username + '&password=' + password + '&grant_type=password',  //Hyper-Insecure
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            }).success(function (data) {
+                $window.sessionStorage.setItem('token', data.access_token);
+                deferred.resolve();
+            }).error(function () {
+                deferred.reject();
+            });
+            return deferred.promise;
+        }
+        return service;
+    }
 })();

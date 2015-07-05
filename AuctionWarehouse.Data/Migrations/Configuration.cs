@@ -1,12 +1,15 @@
 namespace AuctionWarehouse.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using AuctionWarehouse.Data.Model;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
-    
-using AuctionWarehouse.Data.Model;internal sealed class Configuration : DbMigrationsConfiguration<AuctionWarehouse.Data.ApplicationDbContext>
+
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -17,6 +20,75 @@ using AuctionWarehouse.Data.Model;internal sealed class Configuration : DbMigrat
     
     protected override void Seed(ApplicationDbContext context)
         {
+            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(context);
+            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(userStore);
+
+            RoleStore<Role> roleStore = new RoleStore<Role>(context);
+            RoleManager<Role> roleManager = new RoleManager<Role>(roleStore);
+
+            if (!roleManager.RoleExists("Admin"))
+                roleManager.Create(new Role { Name = "Admin" });
+
+            if (!roleManager.RoleExists("User"))
+                roleManager.Create(new Role { Name = "User" });
+
+            ApplicationUser justin = userManager.FindByName("jplou001@fiu.edu");
+
+            if (justin == null)
+            {
+                justin = new ApplicationUser
+                {
+                    UserName = "jplou001@fiu.edu",
+                    Email = "jplou001@fiu.edu"
+                };
+                userManager.Create(justin, "123456");
+                userManager.AddToRole(justin.Id, "Admin");
+
+                justin = userManager.FindByName("jplou001@fiu.edu");
+            }
+
+            ApplicationUser keenan = userManager.FindByName("Keenan@fiu.edu");
+
+            if (keenan == null)
+            {
+                keenan = new ApplicationUser
+                {
+                    UserName = "Keenan@fiu.edu",
+                    Email = "Keenan@fiu.edu"
+                };
+                userManager.Create(keenan, "123456");
+                userManager.AddToRole(keenan.Id, "User");
+
+                keenan = userManager.FindByName("Keenan@fiu.edu");
+            }
+
+            ApplicationUser david = userManager.FindByName("david@fiu.edu");
+
+            if (david == null)
+            {
+                david = new ApplicationUser
+                {
+                    UserName = "david@fiu.edu",
+                    Email = "david@fiu.edu"
+                };
+                userManager.Create(david, "123456");
+                userManager.AddToRole(david.Id, "User");
+
+                david = userManager.FindByName("david@fiu.edu");
+            }
+            //var sellers = context.Sellers.Where(p => p.UserId == null);
+
+            //foreach (var seller in sellers)
+            //{
+            //    seller.UserId = justin.Id;
+            //}
+            //var buyers = context.Buyers.Where(p => p.UserId == null);
+
+            //foreach (var buyer in buyers)
+            //{
+            //    buyer.UserId = justin.Id;
+            //}
+
             context.Items.AddOrUpdate(p => p.Name,
                 new Item {ItemId=1, CategoryId=2, SellerId=1, MinPrice=2.00m, Name="Phone Case", Description="Phone case shaped like a bunny rabbit", Condition= ItemCondition.Good, DateAdded=DateTime.Parse("2010-10-3"), Expiration=DateTime.Parse("2015-10-12"), ImageUrl=pic1, DateCreated=DateTime.Parse("2010-4-8"), DateUpdated=DateTime.Parse("2010-4-8"), IsDeleted=false},
                 new Item { ItemId = 2, CategoryId = 1, SellerId = 2, MinPrice = 2.00m, Name = "Blackberry", Description = "Buisiness mans phone", Condition = ItemCondition.Good, DateAdded = DateTime.Parse("2011-4-13"), Expiration = DateTime.Parse("2015-12-12"), ImageUrl = pic2, DateCreated = DateTime.Parse("2010-4-13"), DateUpdated = DateTime.Parse("2013-4-13"), IsDeleted = false }
@@ -28,12 +100,12 @@ using AuctionWarehouse.Data.Model;internal sealed class Configuration : DbMigrat
                 );
 
             context.Buyers.AddOrUpdate(p => p.Email,
-                new Buyer {BuyerId=1, FirstName="Al", LastName="Gore", Email="Al@neverpresident.com", AddressId=3, DateCreated= new DateTime(2010, 4, 13), DateUpdated=new DateTime(2010, 4, 13), IsDeleted=false}
+                new Buyer {BuyerId=1, FirstName="Al", LastName="Gore", Email="Al@neverpresident.com", AddressId=3, DateCreated= new DateTime(2010, 4, 13), DateUpdated=new DateTime(2010, 4, 13), IsDeleted=false, UserId=justin.Id}
                 );
 
             context.Sellers.AddOrUpdate(p => p.Email,
-                new Seller {SellerId=1, FirstName="Steve", LastName="Ballmer", Email="Steve@microsoft.com", AddressId=1, DateCreated=new DateTime(2008, 4, 10), DateUpdated=new DateTime(2008, 4, 10), IsDeleted=false},
-                new Seller {SellerId=2, FirstName="Mark", LastName="Cuban", Email="Mark@microsolutions.com", AddressId=2, DateCreated=new DateTime(2010, 10, 3), DateUpdated=new DateTime(2010, 10, 3), IsDeleted=false}
+                new Seller { SellerId = 1, FirstName = "Steve", LastName = "Ballmer", Email = "Steve@microsoft.com", AddressId = 1, DateCreated = new DateTime(2008, 4, 10), DateUpdated = new DateTime(2008, 4, 10), IsDeleted = false, UserId = david.Id },
+                new Seller {SellerId=2, FirstName="Mark", LastName="Cuban", Email="Mark@microsolutions.com", AddressId=2, DateCreated=new DateTime(2010, 10, 3), DateUpdated=new DateTime(2010, 10, 3), IsDeleted=false, UserId=keenan.Id}
                 );
 
             context.Transactions.AddOrUpdate(p => p.LastFourDig,

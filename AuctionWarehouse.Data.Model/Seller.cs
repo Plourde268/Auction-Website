@@ -26,6 +26,8 @@ namespace AuctionWarehouse.Data.Model
 
         public IList<Item> ItemsSold { get; set; }
 
-        
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace AuctionWarehouse.Controllers.api
 {
@@ -39,6 +40,21 @@ namespace AuctionWarehouse.Controllers.api
             return items;
         }
 
-        
+        [HttpPost]
+        public bool Post(Item item)
+        {
+            if (ModelState.IsValid)
+            {
+                string userId = User.Identity.GetUserId();
+                item.CreatedUserId = userId;
+                item.UpdatedUserId = userId;
+                item.SellerId = 1;
+
+                _repo.AddItem(item);
+                
+
+            }
+            return true;
+        }
     }
 }

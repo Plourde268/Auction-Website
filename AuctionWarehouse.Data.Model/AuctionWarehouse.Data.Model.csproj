@@ -62,6 +62,7 @@
     <Compile Include="Bid.cs" />
     <Compile Include="Buyer.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
