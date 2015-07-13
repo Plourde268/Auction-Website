@@ -28,6 +28,7 @@ namespace AuctionWarehouse.Repository.Data
             item.DateAdded = DateTime.Now;
             item.Expiration = DateTime.Now.AddDays(7);
             item.DateUpdated = DateTime.Now;
+            item.SellerId = _db.Sellers.FirstOrDefault(p => p.UserId == item.CreatedUserId).SellerId;
             _db.Items.Add(item);
             _db.SaveChanges();
         }
