@@ -27,7 +27,7 @@ namespace AuctionWarehouse.Repository.Data
             item.DateCreated = DateTime.Now;
             item.DateAdded = DateTime.Now;
             item.Expiration = DateTime.Now.AddDays(7);
-            item.Condition = ItemCondition.Good;
+            item.DateUpdated = DateTime.Now;
             _db.Items.Add(item);
             _db.SaveChanges();
         }

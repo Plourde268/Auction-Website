@@ -5,9 +5,8 @@ using System.Web;
 
 namespace AuctionWarehouse.Models
 {
-    public class ItemListDTO
+    public class NewItemDTO
     {
-        public IList<ItemsDTO> ItemList { get; set; }
-        
+
     }
 }

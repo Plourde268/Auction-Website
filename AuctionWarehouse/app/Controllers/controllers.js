@@ -16,7 +16,7 @@
 
         vm.message = '10-4 good buddy';
     }
-    function Items(DbService) {
+    function Items(DbService, $location) {
         var vm = this;
 
         vm.message = 'List of all of the items in the virtual Warehouse';
@@ -24,12 +24,21 @@
         DbService.getItems().then(function (items) {
             vm.auctionItems = items;
         })
+
+        vm.grabbedItem = function (index) {
+            console.log(index);
+            DbService.storeIndex(index);
+            $location.path('/selectedItem');
+        }
     }
-    function SelectedItem() {
+    function SelectedItem(DbService) {
         var vm = this;
 
         vm.message = 'User selected item';
+
+        vm.item = DbService.getItem();
     }
+
     function Categories() {
         var vm = this;
 
