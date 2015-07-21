@@ -10,6 +10,13 @@ namespace AuctionWarehouse.Repository
     public interface IAuctionRepository
     {
         IList<ItemsDTO> GetItems();
+        IList<BidDTO> GetBids(string id);
         void AddItem(Item item);
+        void AddBid(Bid bid);
+        IList<UserItemDTO> FetchUserItems(string id);
+        void EditItem(Item item);
+        void EditBid(Bid bid);
+        void DeleteUserBid(Bid bid);
+        void DeleteUserItem(Item item);
     }
 }

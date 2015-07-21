@@ -8,18 +8,20 @@
         <tr>
             <th>Item</th>
             <th>Your Bid</th>
-            <th>Highest Current Bid</th>
-            <th>Availible</th>
+            <!--<th>Description</th>-->
+            <th>Minimum Price</th>
             <th>Bidding Ends</th>
+            <th>Edit</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>(item.name)</td>
-            <td>(bid.amount)</td>
-            <td>(?????)</td>
-            <td>(bid.Availible)</td>
-            <td>(item.expiration)</td>
+        <tr ng-repeat="prop in vm.userBids">
+            <td>{{prop.ItemName}}</td>
+            <td>${{prop.Amount}}</td>
+            <!--<td>{{prop.Description}}</td>-->
+            <td>${{prop.MinPrice}}</td>
+            <td>{{prop.BidExpiration}}</td>
+            <td><button ng-click="vm.grabUserBid($index)">Edit</button></td>
         </tr>
     </tbody>
 </table>

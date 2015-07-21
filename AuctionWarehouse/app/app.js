@@ -13,14 +13,24 @@
             controller: 'ItemsController',
             controllerAs: 'vm'
         })
-        .when("/selectedItem", {
+        .when('/selectedItem', {
             templateUrl: '/app/Views/selectedItem.html',
             controller: 'SelectedItemController',
             controllerAs: 'vm'
         })
-        .when('/categories', {
-            templateUrl: '/app/Views/categories.html',
-            controller: 'CategoriesController',
+        .when('/selectedItemToEdit', {
+            templateUrl: '/app/Views/selectedItemToEdit.html',
+            controller: 'SelectedItemToEditController',
+            controllerAs: 'vm'
+        })
+        .when('/selectedBidToEdit', {
+            templateUrl: '/app/Views/selectedBidToEdit.html',
+            controller: 'SelectedBidToEditController',
+            controllerAs: 'vm'
+        })
+        .when('/userItems', {
+            templateUrl: '/app/Views/userItems.html',
+            controller: 'UserItemsController',
             controllerAs: 'vm'
         })
         .when('/itemsByCat', {

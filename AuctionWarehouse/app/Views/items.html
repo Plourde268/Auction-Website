@@ -9,15 +9,17 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Category</th>
-            <th>Bid</th>
+            <th>Minimum Price</th>
+            <th>Bid Expiration</th>
+            <th>Place Bid</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="item in vm.auctionItems">
             <td>{{item.Name}}</td>
             <td>{{item.Description}}</td>
-            <td>{{item.CategoryName}}</td>
+            <td>${{item.MinPrice}}</td>
+            <td>{{item.BidExpiration}}</td>
             <td><button ng-click="vm.grabbedItem($index)">Bid</button></td>
         </tr>
     </tbody>

@@ -3,15 +3,11 @@
 <br />
 <h5>Bidding on: {{vm.item.Name}}</h5>
 <br />
-<p>Availible: (bid.availible)</p>
-<br />
 <p>Description of Item: {{vm.item.Description}}</p>
 <br />
-<p>Minimum price: (item.minPrice)</p>
+<p>Minimum price: {{vm.item.MinPrice}}</p>
 <br />
-<p>Current highest bid: (bid.amount)</p>
-<br />
-<p>Bidding window closes: (item.expiration)</p>
+<p>Bidding window closes: {{vm.item.BidExpiration}}</p>
 <br />
 <form ng-submit="vm.addBid()">
     <label>Amount you wish to bid</label>

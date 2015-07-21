@@ -1,0 +1,16 @@
+﻿
+<h3>Edit Item Form</h3>
+
+<h2>{{vm.message}}</h2>
+
+<form ng-disabled="vm.isLoading" novalidate ng-submit="vm.editItem()">
+    <lable>Item Name:</lable><input ng-model="vm.userItem.Name" />
+    <br />
+    <lable>Description:</lable><input ng-model="vm.userItem.Description" />
+    <br />
+    <lable>Minimum Price</lable><input ng-model="vm.userItem.MinPrice" type="text"/>
+    <br />
+    <lable>Bidding Ends</lable><input ng-model="vm.userItem.BidExpiration" />
+    <input type="submit" value="submit" />
+</form>
+<button ng-click="vm.deleteItem()">DELETE</button>

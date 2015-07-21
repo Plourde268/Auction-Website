@@ -1,0 +1,32 @@
+﻿
+<br />
+<h2>{{vm.message}}</h2>
+<br />
+<ul>
+    <li><a href="#/itemsByCat" name="FemProd">Feminine Products</a></li>
+    <li><a href="#/itemsByCat" name="Fruit">Fruit accessories</a></li>
+    <li><a href="#/itemsByCat" name="Comp">Computer</a></li>
+    <li><a href="#/itemsByCat" name="Misc">Misc.</a></li>
+</ul>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Minimum Price</th>
+            <th>Bidding Ends</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="prop in vm.userItems">
+            <td>{{prop.Name}}</td>
+            <td>{{prop.Description}}</td>
+            <td>{{prop.MinPrice}}</td>
+            <td>{{prop.BidExpiration}}</td>
+            <td><button ng-click="vm.grabItemToEdit($index)">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
+

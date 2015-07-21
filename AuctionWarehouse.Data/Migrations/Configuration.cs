@@ -76,18 +76,6 @@ namespace AuctionWarehouse.Data.Migrations
 
                 david = userManager.FindByName("david@fiu.edu");
             }
-            //var sellers = context.Sellers.Where(p => p.UserId == null);
-
-            //foreach (var seller in sellers)
-            //{
-            //    seller.UserId = justin.Id;
-            //}
-            //var buyers = context.Buyers.Where(p => p.UserId == null);
-
-            //foreach (var buyer in buyers)
-            //{
-            //    buyer.UserId = justin.Id;
-            //}
 
             context.Items.AddOrUpdate(p => p.Name,
                 new Item {ItemId=1, CategoryId=2, SellerId=1, MinPrice=2.00m, Name="Phone Case", Description="Phone case shaped like a bunny rabbit", Condition= ItemCondition.Good, DateAdded=DateTime.Parse("2010-10-3"), Expiration=DateTime.Parse("2015-10-12"), ImageUrl=pic1, DateCreated=DateTime.Parse("2010-4-8"), DateUpdated=DateTime.Parse("2010-4-8"), IsDeleted=false},
@@ -100,7 +88,8 @@ namespace AuctionWarehouse.Data.Migrations
                 );
 
             context.Buyers.AddOrUpdate(p => p.Email,
-                new Buyer {BuyerId=1, FirstName="Al", LastName="Gore", Email="Al@neverpresident.com", AddressId=3, DateCreated= new DateTime(2010, 4, 13), DateUpdated=new DateTime(2010, 4, 13), IsDeleted=false, UserId=justin.Id}
+                new Buyer {BuyerId=1, FirstName="Al", LastName="Gore", Email="Al@neverpresident.com", AddressId=3, DateCreated= new DateTime(2010, 4, 13), DateUpdated=new DateTime(2010, 4, 13), IsDeleted=false, UserId=justin.Id},
+                new Buyer { BuyerId = 2, FirstName = "Anna", LastName = "Cousso", Email = "Anna@fiu.edu", AddressId = 4, DateCreated = new DateTime(2010, 4, 13), DateUpdated=new DateTime(2010, 4, 13), IsDeleted=false, UserId=david.Id}
                 );
 
             context.Sellers.AddOrUpdate(p => p.Email,

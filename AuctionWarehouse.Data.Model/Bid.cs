@@ -24,6 +24,5 @@ namespace AuctionWarehouse.Data.Model
         public decimal Amount { get; set; }
 
         public bool Availible { get; set; }
-
     }
 }
