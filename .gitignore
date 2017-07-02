@@ -194,3 +194,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+AuctionWarehouse.Data/Migrations/201707020557175_init.cs
+AuctionWarehouse.Data/Migrations/201707020557175_init.Designer.cs
+AuctionWarehouse.Data/Migrations/201707020557175_init.resx
